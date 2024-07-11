@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learn_flutter_together/02_widget_rule_2/presentation/checkbox_practice_screen.dart';
 
 import '01_widget_rule/presentation/main_screen.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MainScreen(),
+      home: const CheckboxPracticeScreen(),
     );
   }
 }

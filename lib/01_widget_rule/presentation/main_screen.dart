@@ -33,13 +33,16 @@ class _MainScreenState extends State<MainScreen> {
   ];
 
   Set<int> favoriteSet = {};
+  int favoriteCount = 40;
 
   void toggleFavorite(int id) {
     setState(() {
       if (favoriteSet.contains(id)) {
         favoriteSet.remove(id);
+        favoriteCount--;
       } else {
         favoriteSet.add(id);
+        favoriteCount++;
       }
     });
   }
