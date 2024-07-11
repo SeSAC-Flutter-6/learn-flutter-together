@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:learn_flutter_together/03_food_recipe_app/ui/color_styles.dart';
+
+import '../../ui/text_styles.dart';
 
 class BigButton extends StatefulWidget {
   final void Function() onTap;
+
   // 정보(data)
   final String title;
 
@@ -45,7 +49,7 @@ class _BigButtonState extends State<BigButton> {
           height: 40,
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(8)),
-            color: _isPressed ? Colors.grey : Colors.green,
+            color: _isPressed ? ColorStyles.grey4 : ColorStyles.primaryColor,
           ),
           child: Center(
             child: Row(
@@ -53,11 +57,7 @@ class _BigButtonState extends State<BigButton> {
               children: [
                 Text(
                   widget.title,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextStyles.headerTextBold.copyWith(color: Colors.red),
                 ),
                 const Icon(
                   Icons.arrow_forward,
