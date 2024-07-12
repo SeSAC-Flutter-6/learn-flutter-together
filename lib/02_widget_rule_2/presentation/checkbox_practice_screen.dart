@@ -24,6 +24,7 @@ class _CheckboxPracticeScreenState extends State<CheckboxPracticeScreen> {
                   value: e,
                   title: const Text('aaasdfasdfadfasd'),
                   onChanged: (bool? value) {
+                    print(value);
                     setState(() {
                       _values[0] = value!;
                     });
