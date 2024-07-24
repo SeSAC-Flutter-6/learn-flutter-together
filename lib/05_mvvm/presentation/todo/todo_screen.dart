@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:learn_flutter_together/05_mvvm/presentation/todo/todo_view_model.dart';
+import 'package:learn_flutter_together/05_mvvm/provider/todo_view_model_provider.dart';
 
 class TodoScreen extends StatelessWidget {
-  final TodoViewModel viewModel;
-
-  const TodoScreen({
-    super.key,
-    required this.viewModel,
-  });
+  const TodoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = TodoViewModelProvider.of(context).todoViewModel;
     return Scaffold(
       appBar: AppBar(
         title: const Text('todo'),

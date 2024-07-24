@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:learn_flutter_together/04_constraints/data/repository/book_repository_impl.dart';
-import 'package:learn_flutter_together/04_constraints/presentation/book_list_screen.dart';
+import 'package:learn_flutter_together/05_mvvm/data/repository/todo_repository.dart';
+import 'package:learn_flutter_together/05_mvvm/presentation/todo/todo_view_model.dart';
+import 'package:learn_flutter_together/05_mvvm/provider/todo_view_model_provider.dart';
 
 import 'core/router.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    // singleton
+    TodoViewModelProvider(
+      todoViewModel: TodoViewModel(TodoRepository()),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
