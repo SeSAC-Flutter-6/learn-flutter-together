@@ -4,6 +4,7 @@ import 'package:learn_flutter_together/05_mvvm/data/repository/todo_repository.d
 import 'package:learn_flutter_together/05_mvvm/presentation/todo/todo_screen.dart';
 import 'package:learn_flutter_together/05_mvvm/presentation/todo/todo_view_model.dart';
 import 'package:learn_flutter_together/05_mvvm/provider/todo_view_model_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../04_constraints/data/repository/book_repository_impl.dart';
 import '../04_constraints/presentation/book_list_screen.dart';
@@ -28,8 +29,8 @@ final router = GoRouter(
       path: '/todo',
       builder: (context, state) {
         // Factory
-        return TodoViewModelProvider(
-          todoViewModel: TodoViewModel(
+        return ChangeNotifierProvider<TodoViewModel>(
+          create: (context) => TodoViewModel(
             TodoRepository(),
           ),
           child: const TodoScreen(),
