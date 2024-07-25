@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:learn_flutter_together/05_mvvm/presentation/todo/todo_view_model.dart';
-import 'package:learn_flutter_together/05_mvvm/provider/todo_view_model_provider.dart';
 import 'package:provider/provider.dart';
 
 class TodoScreen extends StatelessWidget {
@@ -9,7 +8,7 @@ class TodoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<TodoViewModel>();
-    final todos = viewModel.todos;
+    final state = viewModel.state;
     return Scaffold(
       appBar: AppBar(
         title: const Text('todo'),
@@ -17,11 +16,11 @@ class TodoScreen extends StatelessWidget {
       body: Stack(
         children: [
           ListView(
-            children: todos.map((e) => Text(e)).toList(),
+            children: state.todos.map((e) => Text(e)).toList(),
           ),
-          if (viewModel.isLoading)
+          if (state.isLoading)
             const Center(child: CircularProgressIndicator()),
-          if (viewModel.fetchLoading)
+          if (state.fetchLoading)
             Container(
               width: 200,
               height: 200,
