@@ -8,7 +8,7 @@ class TodoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<TodoViewModel>();
-    final state = viewModel.state;
+    final state = viewModel.value;
     return Scaffold(
       appBar: AppBar(
         title: const Text('todo'),
