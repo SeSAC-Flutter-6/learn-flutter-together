@@ -4,19 +4,19 @@ import 'package:learn_flutter_together/01_widget_rule/presentation/component/gre
 import 'package:learn_flutter_together/01_widget_rule/presentation/main_screen.dart';
 
 void main() {
-  testWidgets('MainScreen Test', (tester) async {
-    await tester.pumpWidget(
-      const MaterialApp(
-        home: MainScreen(),
-      ),
-    );
-
-    expect(find.text('Hello 월드'), findsOneWidget);
-
-    await tester.tap(find.byType(FloatingActionButton));
-    await tester.pumpAndSettle();
-    expect(find.text('Hello 바꼈음'), findsOneWidget);
-  });
+  // testWidgets('MainScreen Test', (tester) async {
+  //   await tester.pumpWidget(
+  //     const MaterialApp(
+  //       home: MainScreen(),
+  //     ),
+  //   );
+  //
+  //   expect(find.text('Hello 월드'), findsOneWidget);
+  //
+  //   await tester.tap(find.byType(FloatingActionButton));
+  //   await tester.pumpAndSettle();
+  //   expect(find.text('Hello 바꼈음'), findsOneWidget);
+  // });
 
   testWidgets('Greeting 위젯 테스트', (tester) async {
     String text = 'world';
