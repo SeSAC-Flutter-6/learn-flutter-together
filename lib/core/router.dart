@@ -7,6 +7,7 @@ import 'package:learn_flutter_together/05_mvvm/provider/todo_view_model_provider
 import 'package:learn_flutter_together/09_web_socket/data/repository/binance_repository_impl.dart';
 import 'package:learn_flutter_together/09_web_socket/presentation/web_socket_screen.dart';
 import 'package:learn_flutter_together/09_web_socket/presentation/web_socket_view_model.dart';
+import 'package:learn_flutter_together/10_js_channel/js_channel_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../04_constraints/data/repository/book_repository_impl.dart';
@@ -14,8 +15,14 @@ import '../04_constraints/presentation/book_list_screen.dart';
 
 // GoRouter configuration
 final router = GoRouter(
-  initialLocation: '/websocket',
+  initialLocation: '/js_channel',
   routes: [
+    GoRoute(
+      path: '/js_channel',
+      builder: (context, state) {
+        return const JsChannelScreen();
+      },
+    ),
     GoRoute(
       path: '/websocket',
       builder: (context, state) {
