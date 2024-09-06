@@ -1,24 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:learn_flutter_together/12_sqflite/data/data_source/water_intake_dao.dart';
-import 'package:learn_flutter_together/12_sqflite/data/repository/water_repository_impl.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+import 'package:learn_flutter_together/12_sqflite/di/di_setup.dart';
+import 'package:learn_flutter_together/12_sqflite/domain/repository/water_repository.dart';
 
 void main() {
   test('WaterRepository Test', () async {
-    // Mock DB
-    Database db = await databaseFactoryFfi.openDatabase(inMemoryDatabasePath);
-    await db.execute('''
-  CREATE TABLE ${WaterIntakeDao.tableName} (
-      ${WaterIntakeDao.columnId} INTEGER PRIMARY KEY AUTOINCREMENT,
-      ${WaterIntakeDao.columnTimestamp} TEXT,
-      ${WaterIntakeDao.columnValue} INTEGER
-  )
-  ''');
+    await configureDependencies('dev');
 
-    final dao = WaterIntakeDao(db);
-
-    final repository = WaterRepositoryImpl(dao);
+    final WaterRepository repository = getIt();
 
     int value = await repository.getTotalWaterToday();
     expect(value, 0);

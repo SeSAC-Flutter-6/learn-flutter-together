@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 import 'package:learn_flutter_together/05_mvvm/data/repository/todo_repository.dart';
 import 'package:learn_flutter_together/05_mvvm/presentation/todo/todo_view_model.dart';
 import 'package:learn_flutter_together/05_mvvm/provider/todo_view_model_provider.dart';
@@ -8,7 +9,7 @@ import 'core/router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await configureDependencies();
+  await configureDependencies(Environment.prod);
 
   runApp(
     // singleton

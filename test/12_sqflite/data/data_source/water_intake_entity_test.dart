@@ -1,22 +1,13 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:learn_flutter_together/12_sqflite/data/data_source/water_intake_dao.dart';
 import 'package:learn_flutter_together/12_sqflite/data/data_source/water_intake_entity.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+import 'package:learn_flutter_together/12_sqflite/di/di_setup.dart';
 
 void main() {
   test('WaterIntakeDao Test', () async {
-    // Mock DB
-    Database db = await databaseFactoryFfi.openDatabase(inMemoryDatabasePath);
-    await db.execute('''
-  CREATE TABLE ${WaterIntakeDao.tableName} (
-      ${WaterIntakeDao.columnId} INTEGER PRIMARY KEY AUTOINCREMENT,
-      ${WaterIntakeDao.columnTimestamp} TEXT,
-      ${WaterIntakeDao.columnValue} INTEGER
-  )
-  ''');
+    await configureDependencies('dev');
 
-    final dao = WaterIntakeDao(db);
+    final WaterIntakeDao dao = getIt();
 
     final entity = WaterIntakeEntity(timestamp: '1725593164623', value: 1);
     await dao.insert(entity);
